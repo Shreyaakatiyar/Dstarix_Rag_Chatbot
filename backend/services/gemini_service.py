@@ -1,12 +1,12 @@
-from google import genai
 from config import GEMINI_API_KEY
+from langchain_google_genai import ChatGoogleGenerativeAI
 
-client = genai.Client(api_key=GEMINI_API_KEY)
+llm = ChatGoogleGenerativeAI(
+    model="gemini-3.1-flash-lite",
+    google_api_key=GEMINI_API_KEY,
+    temperature=0
+)
 
 def test_gemini():
-    response = client.models.generate_content(
-        model="gemini-3.1-flash-lite",
-        contents="Say only: Gemini Connected"
-    )
-
-    return response.text
+    response = llm.invoke("Say Only: Gemini Connected")
+    return response.content
