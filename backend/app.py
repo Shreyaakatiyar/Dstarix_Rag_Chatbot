@@ -1,7 +1,9 @@
-from flask import Flask, request
+from flask import Flask, request, jsonify
+from flask_cors import CORS
 from services.gemini_service import ask_question
 
 app = Flask(__name__)
+CORS(app)
 
 @app.route("/")
 def home():
@@ -9,18 +11,30 @@ def home():
 
 @app.route("/chat", methods=["POST"])
 def chat():
-    
-    data = request.get_json()
+    try:
+        data = request.get_json()
 
-    question = data.get("question")
+        if not data or "question" not in data:
+            return jsonify({
+                "success": False,
+                "message": "Question is required."
+            }), 400
 
-    answer = ask_question(question)
+        question = data["question"]
 
+        answer = ask_question(question)
 
-    return{
-        "question": question,
-        "answer": answer
-    }
+        return jsonify({
+            "success": True,
+            "question": question,
+            "answer": answer
+        })
+
+    except Exception as e:
+        return jsonify({
+            "success": False,
+            "message": str(e)
+        }), 500
 
 if __name__ == "__main__" :
     app.run(debug=True)
