@@ -30,3 +30,20 @@ def create_vector_store(chunks):
     vector_store.save_local("vectorstore")
 
     return vector_store
+
+def load_vector_store():
+    return FAISS.load_local(
+        "vectorstore",
+        embeddings,
+        allow_dangerous_deserialization=True
+    )
+
+def get_retriever():
+    vector_store = load_vector_store()
+    return vector_store.as_retriever(
+        search_kwargs={"k":3}
+    )
+
+def retrieve_documents(query):
+    retriever = get_retriever()
+    return retriever.invoke(query)
