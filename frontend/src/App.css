@@ -1,0 +1,135 @@
+.app-shell {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 20px;
+  position: relative;
+}
+
+.tab-rail {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 6px;
+  background: linear-gradient(180deg, var(--mark) 0%, var(--accent) 100%);
+}
+
+.app-header {
+  width: 100%;
+  max-width: 760px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 26px 4px 20px;
+}
+
+.header-mark {
+  width: 42px;
+  height: 42px;
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  background: var(--ink);
+  color: var(--paper);
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  border-radius: var(--radius-sm);
+}
+
+.header-text {
+  flex: 1;
+  min-width: 0;
+}
+
+.header-eyebrow {
+  margin: 0 0 2px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--mark-strong);
+}
+
+.header-text h1 {
+  margin: 0 0 3px;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 21px;
+  letter-spacing: -0.01em;
+}
+
+.header-subtitle {
+  margin: 0;
+  color: var(--ink-soft);
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.new-chat-button {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 12px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-pill);
+  background: var(--surface);
+  color: var(--ink-soft);
+  font-size: 12.5px;
+  font-weight: 500;
+  transition: border-color 0.15s ease, color 0.15s ease;
+}
+
+.new-chat-button:hover {
+  border-color: var(--mark);
+  color: var(--mark-strong);
+}
+
+.new-chat-button:focus-visible {
+  outline: 2px solid var(--mark);
+  outline-offset: 2px;
+}
+
+.app-main {
+  width: 100%;
+  max-width: 760px;
+  flex: 1;
+  display: flex;
+  padding-bottom: 24px;
+}
+
+.chat-box-wrap {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 128px);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 20px 50px rgba(28, 36, 48, 0.08);
+  overflow: hidden;
+}
+
+@media (max-width: 640px) {
+  .app-shell {
+    padding: 0 12px;
+  }
+
+  .app-header {
+    padding: 20px 2px 14px;
+    flex-wrap: wrap;
+  }
+
+  .new-chat-button span {
+    display: none;
+  }
+
+  .chat-box-wrap {
+    height: calc(100vh - 118px);
+    border-radius: var(--radius-md);
+  }
+}
