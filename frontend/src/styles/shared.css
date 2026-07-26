@@ -1,0 +1,58 @@
+.message-row {
+  display: flex;
+  align-items: flex-end;
+  gap: 10px;
+  animation: rise 0.25s ease both;
+}
+
+.message-row.user {
+  justify-content: flex-end;
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.avatar {
+  width: 30px;
+  height: 30px;
+  flex-shrink: 0;
+  border-radius: var(--radius-sm);
+  display: grid;
+  place-items: center;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.assistant-avatar {
+  background: var(--mark-soft);
+  color: var(--mark-strong);
+}
+
+.user-avatar {
+  background: var(--ink);
+  color: var(--paper);
+  font-size: 10px;
+}
+
+.bubble {
+  padding: 12px 14px;
+  border-radius: var(--radius-md);
+  font-size: 14.5px;
+  line-height: 1.6;
+  white-space: pre-wrap;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .message-row {
+    animation: none !important;
+  }
+}
