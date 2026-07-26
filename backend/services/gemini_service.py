@@ -38,4 +38,6 @@ def ask_question(question: str):
 
     response = llm.invoke(message)
 
-    return response.content
+    sources = [doc.page_content for doc in documents]
+
+    return response.content, sources
