@@ -180,15 +180,15 @@ http://localhost:5173
 
 ### Home
 
-```
+
 ![Home Page](image-1.png)
-```
+
 
 ### Chat Interface
 
-```
+
 ![Chat Interface](image.png)
-```
+
 
 ---
 
