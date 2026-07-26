@@ -22,12 +22,13 @@ def chat():
 
         question = data["question"]
 
-        answer = ask_question(question)
+        answer, sources = ask_question(question)
 
         return jsonify({
             "success": True,
             "question": question,
-            "answer": answer
+            "answer": answer,
+            "sources": sources
         })
 
     except Exception as e:
